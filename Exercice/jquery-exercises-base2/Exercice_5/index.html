@@ -12,6 +12,13 @@
     <button type="button" name="button" >Envoyer</button>
   </form>
   <script>
+    $('form').children().not("button").focusin(function() {
+      $(this).css("border", "1px solid green");
+    });
+
+    $('form').children().not("button").focusout(function() {
+      $(this).css("border", "1px solid red");
+    });
 
   </script>
 </body>

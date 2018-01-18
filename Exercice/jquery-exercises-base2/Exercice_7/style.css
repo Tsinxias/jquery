@@ -25,3 +25,7 @@ div {
 .italic {
 	font-style: italic;
 }
+
+.souligner {
+	text-decoration: underline;
+}

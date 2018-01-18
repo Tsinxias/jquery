@@ -22,9 +22,9 @@
 				<li><span class="vert">AJAX</span> ;</li>
 				<li>Plugins ;</li>
 				<li>Utilitaires (version du <a href="https://fr.wikipedia.org/wiki/Navigateur_web">navigateur web</a>,...).</li>
-			</ul>	
+			</ul>
 		</div>
-		
+
 		<div id="modifications">
 			<h2>Modifications de l'article</h2>
 			<ol id="instructions">
@@ -37,30 +37,48 @@
 				<li>Cliquer ici pour ajouter "Chapitre 1 :" devant le 1er titre h2<br>et "Chapitre 2 :" devant le 2ème titre h2</li>
 			</ol>
 		</div>
-		
-		<script type="text/javascript" src="jquery.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
 				/* agrandir la police de caractères (120%) */
-				
-				
-				/* diminuer la police de caractères (80%) */
-		
-				
-				/* mettre en gras ou remettre en normal les mots en vert */
+				$('#instructions li:first-child').on('click', function() {
+					$("#contenu").css('font-size', '1.2em')
+				})
 
-				
+				/* diminuer la police de caractères (80%) */
+				$('#instructions li:nth-child(2)').on('click', function() {
+					$("#contenu").css('font-size', '0.8em')
+				})
+
+				/* mettre en gras ou remettre en normal les mots en vert */
+				$('#instructions li:nth-child(3)').on('click', function() {
+					$('.vert').toggleClass('gras')
+				})
+
 				/* souligner ou remettre en normal les mots en rouge */
-			
-				
+				$('#instructions li:nth-child(4)').on('click', function() {
+					$('.rouge').toggleClass('souligner')
+				})
+
 				/* remplacer le logo par une autre image au survol */
-				
-				
+				$('#instructions li:nth-child(5)').on('mouseover', function() {
+					$('img').attr('src', 'koala.jpg')
+				})
+
 				/* Afficher l'URL des liens dans une infobulle lors du survol des liens */
-				
+				$('a').on('mouseover', function() {
+					let popup = $(this).attr('href')
+					$('a').attr('title', popup)
+				})
+
 				/* ajouter "Chapitre 1 :" devant le 1er titre h2<br>et "Chapitre 2 :" devant le 2ème titre h2 */
-				
+				$('#instructions li:nth-child(7)').on('click', function() {
+					$('<p>Chapter 1 :</p>').insertAfter('h2:first-of-type')
+					$('<p>Chapter 2 :</p>').insertAfter('h2:nth-of-type(2)')
+				})
+
 			});
 		</script>
 	</body>
-</html>	
+</html>

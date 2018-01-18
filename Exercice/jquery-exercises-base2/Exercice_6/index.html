@@ -16,7 +16,26 @@
   <div class="color blue" id="blue"></div>
 </div>
 <script>
+  $('#green').on('mouseover', function() {
+    $('#texte').css('color', 'green');
+  });
+  $('#green').on('mouseout', function() {
+    $('#texte').css('color', 'black');
+  });
 
+  $('#red').on('mouseover', function() {
+    $('#texte').css('color', 'red');
+  });
+  $('#red').on('mouseout', function() {
+    $('#texte').css('color', 'black');
+  });
+
+  $('#blue').on('mouseover', function() {
+    $('#texte').css('color', 'blue');
+  });
+  $('#blue').on('mouseout', function() {
+    $('#texte').css('color', 'black');
+  });
 </script>
 </body>
 </html>
