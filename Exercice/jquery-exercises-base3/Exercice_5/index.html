@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ex2</title>
+
+  <style>
+    #square {
+      width : 50px;
+      height : 50px;
+      background-color: cyan;
+      border: 2px solid black;
+      margin-bottom : 25px;
+      margin : 0;
+      left : 10px;
+      top : 10px;
+      position : absolute;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="square"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $('body').on('keydown', function(event) {
+      let keys  = event.keyCode;
+      if(keys == 37) {
+        $( "#square" ).animate({
+          left: "-=10",
+        }, 50);
+        leftSide -= 10;
+      } else if(keys == 38) {
+        $( "#square" ).animate({
+          top: "-=10",
+        }, 50);
+      } else if(keys == 39) {
+        $( "#square" ).animate({
+          left: "+=10",
+        }, 50);
+        leftSide += 10;
+      } else if(keys == 40) {
+        $( "#square" ).animate({
+          top: "+=10",
+        }, 50);
+      }
+    });
+
+  </script>
+</body>
+</html>

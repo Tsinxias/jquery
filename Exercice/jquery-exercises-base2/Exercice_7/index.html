@@ -74,8 +74,10 @@
 
 				/* ajouter "Chapitre 1 :" devant le 1er titre h2<br>et "Chapitre 2 :" devant le 2ème titre h2 */
 				$('#instructions li:nth-child(7)').on('click', function() {
-					$('<p>Chapter 1 :</p>').insertAfter('h2:first-of-type')
-					$('<p>Chapter 2 :</p>').insertAfter('h2:nth-of-type(2)')
+					$('#contenu h2:first-of-type').prepend('Chapter 1 : ');
+					$('#contenu h2:nth-of-type(2)').prepend('Chapter 2 : ');
+					// $('<p>Chapter 1 :</p>').insertBefore('#contenu h2:first-of-type')
+					// $('<p>Chapter 2 :</p>').insertBefore('#contenu h2:nth-of-type(2)')
 				})
 
 			});

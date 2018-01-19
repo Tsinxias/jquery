@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ex2</title>
+
+  <style>
+    #rectangle {
+      height : 10px;
+      width : 150px;
+      border : 2px solid black;
+      margin-bottom: 25px;
+    }
+
+    .petit {
+      background-color: purple;
+    }
+
+    .bg-green {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="rectangle" class="petit"></div>
+
+  <button id="shape">MAKE IT BIGGER !</button>
+  <button id="green">Green</button>
+  <button id="initialColor">Before was better</button>
+  <button id="disappear">Bye Bye</button>
+  <button id="appear">Hello again</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+    // button 1
+
+    let rectangleHeight = 10;
+
+    $( "#shape" ).click(function() {
+      if(rectangleHeight <= 100) {
+        rectangleHeight += 10;
+        $( "#rectangle" ).animate({
+          height: "+=10",
+        }, 100);
+      } else {
+        $( "#rectangle" ).animate({
+          height: "10",
+        }, 100);
+      }
+    });
+
+    //button 2
+
+    $('#green').on('click', function() {
+      $('#rectangle').addClass('bg-green')
+    });
+
+    //button 3
+
+    $('#initialColor').on('click', function() {
+      $('#rectangle').removeClass('bg-green')
+    });
+
+    //button 4
+
+    $('#disappear').on('click', function() {
+      $('#rectangle').hide()
+    });
+
+    //button 5
+
+    $('#appear').on('click', function() {
+      $('#rectangle').show()
+    });
+
+  </script>
+</body>
+</html>
