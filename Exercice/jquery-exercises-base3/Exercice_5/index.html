@@ -28,28 +28,40 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
+
+    let leftSide = 10;
+
     $('body').on('keydown', function(event) {
-      let keys  = event.keyCode;
-      if(keys == 37) {
-        $( "#square" ).animate({
-          left: "-=10",
-        }, 50);
-        leftSide -= 10;
-      } else if(keys == 38) {
-        $( "#square" ).animate({
-          top: "-=10",
-        }, 50);
-      } else if(keys == 39) {
-        $( "#square" ).animate({
-          left: "+=10",
-        }, 50);
-        leftSide += 10;
-      } else if(keys == 40) {
-        $( "#square" ).animate({
-          top: "+=10",
-        }, 50);
+      console.log($('#square').position());
+      if($('#square').position().left < 0 || $('#square').position().top < 0 || $('#square').position().left > 500 || $('#square').position().top > 500) {
+        $('#square').animate({
+          left: "10",
+          top : "10",
+        });
+      } else {
+        let keys  = event.keyCode;
+        if(keys == 37) {
+          $( "#square" ).animate({
+            left: "-=10",
+          }, 50);
+          leftSide -= 10;
+        } else if(keys == 38) {
+          $( "#square" ).animate({
+            top: "-=10",
+          }, 50);
+        } else if(keys == 39) {
+          $( "#square" ).animate({
+            left: "+=10",
+          }, 50);
+          leftSide += 10;
+        } else if(keys == 40) {
+          $( "#square" ).animate({
+            top: "+=10",
+          }, 50);
+        }
       }
     });
+
 
   </script>
 </body>

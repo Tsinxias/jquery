@@ -4,16 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ex1</title>
+  <title>Ex4</title>
 </head>
 <body>
+  <form id="myform">
+    <label>Firstname: </label>
+    <input required id="first" class="letters" type="text" id="field" name="field">
+    <br>
+    <label>Lastname: </label>
+    <input required id="last" class="letters" type="text" id="field" name="field">
+    <br>
+    <label>Birthdate: </label>
+    <input required id="date" type="date" id="field" name="field">
+    <br>
+    <label>Birthplace: </label>
+    <input required id="place" type="text" id="field" name="field">
+    <br>
+    <label>Job: </label>
+    <input required id="job" type="text" id="field" name="field">
+    <br>
+    <label>Company: </label>
+    <input required id="company" type="text" id="field" name="field">
+    <br>
+  </form>
 
+  <button id="button">Generate presentation</button>
+  <p id="sentence">&nbsp;</p>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
 
-    
+    $(".letters").on("keydown", function(event){
+      // Allow controls such as backspace, tab etc.
+      var arr = [8,9,16,17,20,35,36,37,38,39,40,45,46, 109, 189];
+
+      // Allow letters
+      for(var i = 65; i <= 90; i++){
+        arr.push(i);
+      }
+
+      // Prevent default if not in array
+      if(jQuery.inArray(event.which, arr) === -1){
+        event.preventDefault();
+      }
+    });
+
+
+    $('#button').on('click', function() {
+      let name = $('#myform #first').val() + ' ' + $('#myform #last').val();
+      let date = $('#myform #date').val();
+      let place = $('#myform #place').val();
+      let job = $('#myform #job').val();
+      let company = $('#myform #company').val();
+
+      $('#sentence').text(name + ', né le ' + date + ' à ' + place + ', actuellement ' + job + ' à ' + company + '.')
+    })
+
+
   </script>
 </body>
 </html>

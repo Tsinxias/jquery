@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ex1</title>
+  <title>Ex2</title>
 </head>
 <body>
 
@@ -24,23 +24,27 @@
 
     let condition = function() {
       let salaries = $('#salary').val();
+      let charges = salaries * 18/100;
+      let assurance = salaries * 7/100;
+      let cotisation = salaries * 5/100;
+      let allPaid = charges + assurance + cotisation;
 
       if($('.gender:checked').val() == 'female') {
         if($('#child').val() == 3) {
-          reduction = salaries *3/100;
+          reduction = allPaid *3/100;
           return reduction;
-        } else if ($('#child').val() >= 3) {
-          reduction = salaries *4/100;
+        } else if ($('#child').val() > 3) {
+          reduction = allPaid *4/100;
           return reduction;
         } else {
-          reduction = salaries *2/100;
+          reduction = allPaid *2/100;
           return reduction;
         }
       } else if ($('#child').val() == 3) {
-        reduction = salaries/100;
+        reduction = allPaid/100;
         return reduction;
-      } else if ($('#child').val() >= 3) {
-        reduction = salaries *2/100;
+      } else if ($('#child').val() > 3) {
+        reduction = allPaid *2/100;
         return reduction;
       } else {
         return reduction = 0;

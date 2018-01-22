@@ -4,16 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ex1</title>
+  <title>Ex3</title>
 </head>
 <body>
-
+  <form id="myform">
+    <label>Lastname: </label>
+    <input required id="first" type="text" id="field" name="field">
+    <br>
+    <label>Firstname: </label>
+    <input required id="last" type="text" id="field" name="field">
+    <br>
+    <label>Email: </label>
+    <input required type="email" id="field" name="field">
+    <br/>
+    <label>N°: </label>
+    <input required type="number" id="field" name="field">
+    <br>
+    <input type="submit" value="Validate!">
+  </form>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
 
-    
+  $(function() {
+    $('#first').keydown(function (e) {
+      if (e.shiftKey || e.ctrlKey || e.altKey) {
+        e.preventDefault();
+      } else {
+        var key = e.keyCode;
+        if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90) || (key >= 109) || (key >= 189))) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
+
+  $(function() {
+    $('#last').keydown(function (e) {
+      if (e.shiftKey || e.ctrlKey || e.altKey) {
+        e.preventDefault();
+      } else {
+        var key = e.keyCode;
+        if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90) || (key >= 109) || (key >= 189))) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
+
   </script>
 </body>
 </html>
