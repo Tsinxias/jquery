@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ex1</title>
+
+  <style>
+    .red {
+      background-color: red;
+    }
+
+    .all {
+      width : 150px;
+    }
+
+    .ratio {
+      visibility: hidden;
+    }
+
+    h4 {
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock, paper, scissors... What will you choose ?</h1>
+
+  <div class="all">
+    <div id="pierre">Rock</div>
+    <div id="feuille">Paper</div>
+    <div id="ciseaux">Scissor</div>
+  </div>
+
+  <h4 id="computerChoice">&nbsp;</h4>
+  <p id="result">Choose one of the options and click on 'shifumi'</p>
+
+  <span id="ratioWin">Win : 0 ;</span>
+  <span id="ratioLose">Lose : 0</span>
+
+  <br>
+  <button id="shifumi">Shifumi !</button>
+
+  <button id="stats">Show your game stats</button>
+  <br>
+  <span class="ratio">&nbsp;</span>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+    let options = ['rock', 'paper', 'scissors'];
+    let playersWin = 0;
+    let computersWin = 0;
+
+    let randomize = function() {
+      return Math.floor(Math.random()*3);
+    }
+
+    if($('.all div').hasClass('red') == false) {
+      $('#pierre').on('click', function() {
+        $('#pierre').toggleClass('red');
+        if($('#pierre').hasClass('red')) {
+          $('#feuille').hide()
+          $('#ciseaux').hide()
+        } else {
+          $('#feuille').show()
+          $('#ciseaux').show()
+        };
+      });
+
+      $('#feuille').on('click', function() {
+        $('#feuille').toggleClass('red');
+        if($('#feuille').hasClass('red')) {
+          $('#pierre').hide()
+          $('#ciseaux').hide()
+        } else {
+          $('#pierre').show()
+          $('#ciseaux').show()
+        };
+      });
+
+      $('#ciseaux').on('click', function() {
+        $('#ciseaux').toggleClass('red');
+        if($('#ciseaux').hasClass('red')) {
+          $('#feuille').hide()
+          $('#pierre').hide()
+        } else {
+          $('#feuille').show()
+          $('#pierre').show()
+        };
+      });
+    };
+
+
+    $('#shifumi').on('click', function() {
+      let randomNumber = randomize();
+      let computers = options[randomNumber];
+      $('#computerChoice').text('The computer chose ' + computers);
+
+      let percentage = Math.round(playersWin/(playersWin+computersWin)*100);
+
+      if ($('div').hasClass('red') == false) {
+        $('p').text("Please choose 1 of them");
+        $('#computerChoice').html('&nbsp;');
+      } else if ($('#pierre').hasClass('red') == true  && computers == options[0] || $('#feuille').hasClass('red') == true && computers == options[1] || $('#ciseaux').hasClass('red') == true && computers == options[2]) {
+        $('#result').text("It's a tie");
+        $('.ratio').text('Your win ratio is '+ percentage + "%");
+      } else if ($('#pierre').hasClass('red') == true && computers == options[2] || $('#feuille').hasClass('red') == true && computers == options[0] || $('#ciseaux').hasClass('red') == true && computers == options[1]) {
+        $('#result').text("You won !");
+        playersWin++;
+        $('.ratio').text('Your win ratio is '+ percentage + "%");
+        $('#ratioWin').text("Win : " + playersWin + " ;");
+      } else if ($('#pierre').hasClass('red') == true && computers == options[1] || $('#feuille').hasClass('red') == true && computers == options[2] || $('#ciseaux').hasClass('red') == true && computers == options[0]) {
+        $('#result').text("You lost...");
+        computersWin++;
+        $('.ratio').text('Your win ratio is '+ percentage + "%");
+        $('#ratioLose').text('Lose : ' + computersWin);
+      }
+
+      $('#stats').on('click', function() {
+        $('.ratio').css('visibility', 'visible');
+      })
+    })
+
+
+  </script>
+</body>
+</html>
