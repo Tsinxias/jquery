@@ -8,12 +8,57 @@
 </head>
 <body>
 
-
+  Salary
+  <input type="number" id="salary"><br>
+  Gender<br>
+  <input class="gender" type="radio" name="gender" value="male">Male <br>
+  <input class="gender" type="radio" name="gender" value="female">Female<br>
+  Number of children<br>
+  <input id="child" type="number" name="children">
+  <br>
+  <button id="calcul">Calculate your net salary</button>
+  <p id="result">&nbsp;</p>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
 
-    
+    let condition = function() {
+      let salaries = $('#salary').val();
+
+      if($('.gender:checked').val() == 'female') {
+        if($('#child').val() == 3) {
+          reduction = salaries *3/100;
+          return reduction;
+        } else if ($('#child').val() >= 3) {
+          reduction = salaries *4/100;
+          return reduction;
+        } else {
+          reduction = salaries *2/100;
+          return reduction;
+        }
+      } else if ($('#child').val() == 3) {
+        reduction = salaries/100;
+        return reduction;
+      } else if ($('#child').val() >= 3) {
+        reduction = salaries *2/100;
+        return reduction;
+      } else {
+        return reduction = 0;
+      }
+    }
+
+    let salaryGiven = function() {
+      let salaries = $('#salary').val();
+      let charges = salaries * 18/100;
+      let assurance = salaries * 7/100;
+      let cotisation = salaries * 5/100;
+      let reduction = condition();
+      let total =  salaries - charges - assurance - cotisation + reduction;
+      $('#result').text('Your net salary is ' + total);
+    }
+
+    $('#calcul').on('click',salaryGiven);
+
   </script>
 </body>
 </html>
