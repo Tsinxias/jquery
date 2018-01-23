@@ -11,55 +11,61 @@
       width : 50px;
       height : 50px;
       background-color: cyan;
-      border: 2px solid black;
       margin-bottom : 25px;
       margin : 0;
-      left : 10px;
-      top : 10px;
       position : absolute;
     }
 
-
+    #space {
+      width : 400px;
+      height : 400px;
+      border: 2px solid black;
+    }
   </style>
 </head>
 <body>
-  <div id="square"></div>
-
+  <div id="space">
+    <div id="square"></div>
+  </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
 
-    let leftSide = 10;
-
     $('body').on('keydown', function(event) {
-      console.log($('#square').position());
-      if($('#square').position().left < 0 || $('#square').position().top < 0 || $('#square').position().left > 500 || $('#square').position().top > 500) {
-        $('#square').animate({
-          left: "10",
-          top : "10",
-        });
-      } else {
-        let keys  = event.keyCode;
-        if(keys == 37) {
+      let keys  = event.keyCode;
+      if(keys == 37) {
+        if(($('#square').position().left < 20)) {
+          $( "#square" ).css('left', "360px");
+        } else {
           $( "#square" ).animate({
             left: "-=10",
           }, 50);
-          leftSide -= 10;
-        } else if(keys == 38) {
+        }
+      } else if(keys == 38) {
+        if(($('#square').position().top < 20)) {
+          $( "#square" ).css('top', "360px");
+        } else {
           $( "#square" ).animate({
             top: "-=10",
           }, 50);
-        } else if(keys == 39) {
+        }
+      } else if(keys == 39) {
+        if(($('#square').position().left > 350)) {
+          $( "#square" ).css('left', "10px");
+        } else {
           $( "#square" ).animate({
             left: "+=10",
           }, 50);
-          leftSide += 10;
-        } else if(keys == 40) {
+        }
+      } else if(keys == 40) {
+        if(($('#square').position().top > 350)) {
+          $( "#square" ).css('top', "10px");
+        } else {
           $( "#square" ).animate({
             top: "+=10",
           }, 50);
-        }
-      }
+        };
+      };
     });
 
 
