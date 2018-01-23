@@ -7,12 +7,24 @@
   <title>Ex1</title>
 
   <style>
+    body {
+      background-image: linear-gradient(to bottom, rgba(55,62,70,.1),rgba(55,62,70,.1)), url("lama.jpg");
+      font-weight: bold;
+      font-size: 150%;
+      display : flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .red {
-      background-color: red;
+      border: 3px solid red;
     }
 
     .all {
-      width : 150px;
+      width : 100%;
+      margin: auto;
+      display : flex;
+      justify-content: center;
     }
 
     .ratio {
@@ -22,27 +34,50 @@
     h4 {
       font-weight: normal;
     }
+
+    .sizing {
+      width : 50px;
+      height : 50px;
+      margin: 15px;
+    }
+
+    h2, p {
+      margin: 0;
+    }
+
+    button img{
+      width : 200px;
+    }
+
+    h1 {
+      margin-top: 75px;
+    }
+
+    .makeUp {
+      font-size: 110%;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>Rock, paper, scissors... What will you choose ?</h1>
 
   <div class="all">
-    <div id="pierre">Rock</div>
-    <div id="feuille">Paper</div>
-    <div id="ciseaux">Scissor</div>
+    <div id="pierre"><img src="rock.png" alt="" class="sizing"></div>
+    <div id="feuille"><img src="paper.png" alt="" class="sizing"></div>
+    <div id="ciseaux"><img src="scissors.png" alt="" class="sizing"></div>
   </div>
 
   <h4 id="computerChoice">&nbsp;</h4>
-  <p id="result">Choose one of the options and click on 'shifumi'</p>
+  <p id="result">Choose one of the options and click on 'shuffle'</p>
 
   <span id="ratioWin">Win : 0 ;</span>
   <span id="ratioLose">Lose : 0</span>
 
   <br>
-  <button id="shifumi">Shifumi !</button>
+  <button id="shifumi"><img src="Shuffle!_Logo.gif" alt=""></button>
 
-  <button id="stats">Show your game stats</button>
+  <button id="stats" class="makeUp">Show your game stats</button>
   <br>
   <span class="ratio">&nbsp;</span>
 
@@ -99,7 +134,7 @@
     $('#shifumi').on('click', function() {
       let randomNumber = randomize();
       let computers = options[randomNumber];
-      $('#computerChoice').text('The computer chose ' + computers);
+      $('#computerChoice').html('The computer chose ' + computers);
 
       let percentage = Math.round(playersWin/(playersWin+computersWin)*100);
 
@@ -107,15 +142,15 @@
         $('p').text("Please choose 1 of them");
         $('#computerChoice').html('&nbsp;');
       } else if ($('#pierre').hasClass('red') == true  && computers == options[0] || $('#feuille').hasClass('red') == true && computers == options[1] || $('#ciseaux').hasClass('red') == true && computers == options[2]) {
-        $('#result').text("It's a tie");
+        $('#result').html("<h2>It's a tie</h2>");
         $('.ratio').text('Your win ratio is '+ percentage + "%");
       } else if ($('#pierre').hasClass('red') == true && computers == options[2] || $('#feuille').hasClass('red') == true && computers == options[0] || $('#ciseaux').hasClass('red') == true && computers == options[1]) {
-        $('#result').text("You won !");
+        $('#result').html("<h2>You won !</h2>");
         playersWin++;
         $('.ratio').text('Your win ratio is '+ percentage + "%");
         $('#ratioWin').text("Win : " + playersWin + " ;");
       } else if ($('#pierre').hasClass('red') == true && computers == options[1] || $('#feuille').hasClass('red') == true && computers == options[2] || $('#ciseaux').hasClass('red') == true && computers == options[0]) {
-        $('#result').text("You lost...");
+        $('#result').html("<h2>You lost...</h2>");
         computersWin++;
         $('.ratio').text('Your win ratio is '+ percentage + "%");
         $('#ratioLose').text('Lose : ' + computersWin);
