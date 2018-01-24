@@ -8,3 +8,12 @@
 form {
     padding: 10px;
 }
+
+
+.valid {
+  outline : 2px solid green;
+}
+
+.invalid {
+  outline: 2px solid red;
+}
